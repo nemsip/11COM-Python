@@ -1,9 +1,9 @@
 # game.py
-# -------------
+# --------------
 # Resources:
 # https://www.youtube.com/watch?v=2qP1M1Nf__w
 # https://www.youtube.com/watch?v=yCTUzf-Exbc - 11:38
-# -------------
+# --------------
 
 # imports
 import arcade
