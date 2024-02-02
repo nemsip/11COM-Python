@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Website</title>
+    <!-- Add your CSS file links here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Test Website with Flask</h1>
+        <h5>by Me</h5>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/#">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/image-search">Image Search</a></li>
+            <li><form class="navbar-search">
+                <input type="text" placeholder="Search..." name="query" id="search">
+                <button type="submit">
+                    <img src="{{ url_for('static', filename='images/search.svg') }}" alt="Search Icon">
+                </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Test Website with Flask by <em>Cryptic1526</em><br><span class="halfline"></span> &copy; Copyright CDN (CrypticDeveloperNetwork) 2024.</p>
+    </footer>
+</body>
+</html>
