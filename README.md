@@ -12,6 +12,6 @@ This repo contains the following folders:
 - **Python Arcade**: This folder contains some games that I have developed using Python Arcade, a library for creating 2D video games with Python.
 
 ## Licensing and Legal
-This repo is licensed under the MIT License, with acceptions regarding images and other indicia. Legal inquiries should be directed to [legal@crypticdevelopernetwork](mailto:crypticdevelopernetwork+legal@gmail.com).
+This repo is licensed under the MIT License, with exceptions regarding images and other indicia. Legal inquiries should be directed to [legal@crypticdevelopernetwork](mailto:crypticdevelopernetwork+legal@gmail.com), or to [FARADAY Corperation](http://cnr7lfgktmhqfqstgjsmerlxm54yqfw44gt2gqnu6myq7bpoqhqwheid.onion/browser-check) (DW/ToR, CrypTor Browser required to access hidden service).
 
 ### Thanks for visiting!
