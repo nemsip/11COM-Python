@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block content %}
+<img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+
+<div class="search-bar">
+    <form action="/image-search" method="get" class="search-bar">
+        <input type="text" placeholder="Search Images..." name="query" id="search">
+        <button type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}
