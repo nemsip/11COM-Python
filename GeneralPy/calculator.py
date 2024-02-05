@@ -1,8 +1,9 @@
-# hello.py
+# calculator.py
 
 import time
 
 time.sleep(1)
+
 while True:
     try:
         num = int(input("What number? >_ "))
@@ -23,4 +24,7 @@ while True:
     elif operation == 3:
         print(num * num2)
     elif operation == 4:
-        print(num / num2)
+        if num2 == 0:
+            print("Invalid input. Division by zero is not possible.")
+        else:
+            print(num / num2)
