@@ -17,6 +17,8 @@ while True:
         print("Invalid input. Please choose a number between 1 and 4.")
         continue
 
+    time.sleep(3)
+
     if operation == 1:
         print(num + num2)
     elif operation == 2:
