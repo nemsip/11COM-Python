@@ -6,6 +6,12 @@ def factorial_thing(n):
         result *= i
     return result
 
+def fac(n):
+    if n == 1:
+        return 1
+    else:
+        return n * fac(n - 1)
+
 number = int(input("Enter a number: "))
 
 factx = factorial_thing(number)

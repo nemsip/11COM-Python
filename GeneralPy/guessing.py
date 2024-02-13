@@ -15,16 +15,12 @@ print("""
 
 ans = random.randint(1, 100)
 print(ans)
-guesses = 0
 
 response = int(input("Choose a number between 1 and 100 >_ "))
 
 while response != ans:
-    if ans == response
-        guesses += 1
-        print("Correct! You win! The answer was " + ans + "!")
-        print("It's taken " + str(guesses) + "guesses to get it!")
-        continue
+    if ans == response:
+        print("Correct!")
     elif response > ans:
         print("Too high! Try a lower number")
     else:
@@ -33,7 +29,6 @@ while response != ans:
 
 again = str(input("Do want to play again?\n1. Yes\n2. No\n>_ ")).lower
 while again not in ["1", "2"]:
-    print("Sorry, that is not a valid answer. Try again.")
     again = str(input("Do want to play again?\n1. Yes\n2. No\n>_ ")).lower
     if again == "1":
         continue

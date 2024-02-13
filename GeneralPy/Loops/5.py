@@ -6,4 +6,4 @@ for i in range(12):
     number = int(input("Enter number {}: ".format(i + 1)))
     total += number
 
-print("The total is:", str(total) + f"\n🔥🔥🔥")
+print("The to tal is:", str(total) + f"\n🔥🔥🔥")
