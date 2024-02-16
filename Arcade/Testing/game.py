@@ -15,22 +15,23 @@ healthAmount = "placeholder.health.healthAmount"
 damageAmount = "placeholder.health.damageAmount"
 combatPower = "placeholder.combat.combatPower"
 
-# define game window
-class GameWindow(arcade.Window):
-    def __init__(self, width, height, title):
-        super().__init__(width, height, title)
-        self.set_location(400, 200)
+# Constant vars
+SCREEN_TITLE = gameName
 
-        arcade.set_background_color(arcade.color.BRITISH_RACING_GREEN)
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 650
 
-    def on_draw(self):
-        arcade.start_render()
+# Constants used to scale our sprites from their original size
+CHARACTER_SCALING = 1
+TILE_SCALING = 0.5
+COIN_SCALING = 0.5
+SPRITE_PIXEL_SIZE = 128
+GRID_PIXEL_SIZE = SPRITE_PIXEL_SIZE * TILE_SCALING
 
-GameWindow(1280, 720, "Currently running: " + gameName)
-
-# render ground
-# arcade.draw_lrtb_rectangle_filled()
-
+# Movement speed of player, in pixels per frame
+PLAYER_MOVEMENT_SPEED = 10
+GRAVITY = 1
+PLAYER_JUMP_SPEED = 20
 
 
 
