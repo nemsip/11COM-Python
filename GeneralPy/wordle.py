@@ -1,12 +1,17 @@
 import random
 import csv
-from colored import fg, attr
+
+emoji_mapping = {
+    'correct': '🟩',
+    'in_word': '🟨',
+    'incorrect': '⬛'
+}
 
 def load_words_from_csv_pls_work(filename, word_column_index):
     words = []
     with open(filename, 'r') as csvfile:
         reader = csv.reader(csvfile)
-        next(reader)  
+        next(reader)   
         for row in reader:
             words.append(row[word_column_index])
     return words
@@ -15,26 +20,26 @@ word_list = load_words_from_csv_pls_work(r'C:\Users\nemit\Documents\11COM\Python
 
 while True:
     answer = random.choice(word_list).upper()
+    print(answer)
     attempts = 6
 
     while attempts > 0:
         guess = input("Enter your guess: ").upper()
 
         if len(guess) != 5:
-            print("Please enter a  5-letter word.")
+            print("Please enter a   5-letter word.")
             continue
 
         result = []
-        # have no idea what im doing wrong here
         for i in range(len(answer)):
             if guess[i] == answer[i]:
-                result.append((guess[i], fg('green'), attr('reset')))
+                result.append(emoji_mapping['correct'])
             elif guess[i] in answer:
-                result.append((guess[i], fg('orange'), attr('reset')))
+                result.append(emoji_mapping['in_word'])
             else:
-                result.append((guess[i], fg('grey'), attr('reset')))
+                result.append(emoji_mapping['incorrect'])
 
-        print(" ".join([f"{color}{char}{attr('reset')}" for char, color, _ in result]))
+        print(" ".join(result))
 
         if guess == answer:
             print("\nCongratulations! You guessed the word correctly!")
