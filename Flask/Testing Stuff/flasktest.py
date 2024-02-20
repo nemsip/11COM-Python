@@ -30,4 +30,4 @@ def image_search():
     data = response.json()
     return render_template('results.html', images=data['hits'])
 
-app.run(host="0.0.0.0", port=80)
+app.run(host="0.0.0.0", port=80, debug=True)
