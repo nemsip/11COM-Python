@@ -13,5 +13,5 @@ wav = tts.tts(text=inputText, speaker_wav=r"%USERPROFILE%\Desktop\MrMcLeod\Enhan
 
 # tts.voice_conversion_to_file(source_wav="my/source.wav", target_wav="my/target.wav", file_path="mmcout.wav")
 
-tts.tts_to_file(text=inputText, speaker_wav=r"%USERPROFILE%\Desktop\MrMcLeod\Enhanced.mp3"", language="en", file_path="mmcout.wav")
+# tts.tts_to_file(text=inputText, speaker_wav=r"%USERPROFILE%\Desktop\MrMcLeod\Enhanced.mp3"", language="en", file_path="mmcout.wav")
 
