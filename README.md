@@ -1,5 +1,5 @@
 # Python Projects for 11COM
-![CrypticBG](https://github.com/Cryptic1526/11COM-Python/assets/119151348/d131b9d3-a4ab-4312-9cd0-802f9c15ab04)
+![CrypticBG](https://github.com/nemsip/11COM-Python/assets/155419561/a956d417-0d75-4c2a-adb2-91f6f8572701)
 
 This is a Git repo for my python-related stuff in year 11 Computer Studies (11COM) for Pakuranga College.
 
