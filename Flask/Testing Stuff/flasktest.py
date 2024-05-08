@@ -25,9 +25,12 @@ def imageSearch():
 @app.route('/image-search', methods=['GET'])
 def image_search():
     query = request.args.get('query')
-    api_key = '38765376-df4916e59545efa59174e1ebb'
-    response = requests.get(f'https://pixabay.com/api/?key={api_key}&q={query}&per_page=20')
+    pixabay_api_key = '38765376-df4916e59545efa59174e1ebb'
+    response = requests.get(f'https://pixabay.com/api/?key={pixabay_api_key}&q={query}&per_page=20')
     data = response.json()
     return render_template('results.html', images=data['hits'])
+
+# Pexels API Key:
+# 9rDgxeQ6wJR6Vpnnd9FjsEJ4S1AFZG6QWNplzlm3eZ3YgHtLAujPIfc8
 
 app.run(host="0.0.0.0", port=80, debug=True)

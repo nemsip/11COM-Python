@@ -105,13 +105,11 @@ footer {
     padding-bottom: 10px;
 }
 
-/*img {*/
-/*    max-width: 100%;*/
-/*    height: auto;*/
-/*}*/
 
 .pB {
     padding-bottom: 10px;
+    max-width: 100%;
+    height: auto;
 
 }
 
@@ -147,8 +145,8 @@ input {
 .logo {
     display: block;
     margin: 50px auto;
-    width: 150px;
-    height: 150px;
+    width: 650px;
+    height: 60px;
 }
 
 /* Search bar styles */
