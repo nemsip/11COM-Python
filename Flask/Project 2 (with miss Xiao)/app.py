@@ -8,7 +8,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('`index`.html')
+
+@app.route('/work-hours')
+def work_hours():
+    return """<h1>Work Hours</h1><p style="color: #D2691E;">Monday - Friday: 5PM - 7PM (GMT+12)<br>Saturday - Sunday: 10AM - 5PM</p>"""
 
 @app.route('/contact')
 def contact():
@@ -40,6 +44,11 @@ def time():
     currentdate = now.strftime("%d/%m/%Y")
     return f"Today's date is {currentdate}"
 
+@app.route('/about')
+def about():
+    return """
+    <h1>About Me</h1>
+    <p>I am a student at the Pakuranga college of studying Computer Science.<br><br>My hobbies are coding, red teaming and designing things for the betterment of the security of the digital world :)<br<br>My Favorite subject is Computer Studies and Music 🎵🎶</p>"""
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
