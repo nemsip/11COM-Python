@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    </head>
+    <body>
+        <header>
+            <h1>Test Website with Flask</h1>
+            <h2>by Me</h2>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="/#">Home</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            <p>Website in flask<br>&copy; Copyright CDN 2024.</p>
+    </body>
+</html>
