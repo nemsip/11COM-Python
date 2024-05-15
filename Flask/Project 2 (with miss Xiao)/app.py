@@ -59,6 +59,22 @@ def customerService():
     else:
         return "Customer service is closed. Please come back later<br><br>The above status will change when the time is in working hours."
 
+
+@app.route('/nemit-down')
+def nemitDown():
+    going_down = "nemit<br>" * 1000
+    return going_down
+
+@app.route('/nemit-across')
+def nemitAcross():
+    going_up = "<span style='padding-right: 10px;'>nemit</span>" * 1000
+    return going_up
+
+@app.route('/x')
+def x():
+    ex = "<span style='letter-spacing: -3px; line-height: 45%;'>x </span>" * 10000000
+    return ex
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
