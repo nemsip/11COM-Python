@@ -59,7 +59,6 @@ def customerService():
     else:
         return "Customer service is closed. Please come back later<br><br>The above status will change when the time is in working hours."
 
-
 @app.route('/nemit-down')
 def nemitDown():
     going_down = "nemit<br>" * 1000
@@ -78,6 +77,22 @@ def x():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
+
+@app.route('/profile')
+def profile():
+    birth_year = '2008-06-17'
+    birth = datetime.strptime(birth_year, "%Y-%m-%d")
+    today = datetime.today()
+    age_rn = (today - birth).days // 365
+    print(today.year, birth.year)
+
+    user_data = {
+        'name': 'nemit',
+        'age': age_rn,
+        'hobbies': 'Coding, Music, Reading',
+    }
+
+    return render_template('profile.html', user_data=user_data)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
