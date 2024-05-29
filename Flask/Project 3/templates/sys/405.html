@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        padding-top: 100px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 6em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: underline;
+    }
+
+    img {
+        width: 10000px;
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    .centerAlign {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>:/</h1>
+        <h2>Oops!</h2>
+        <p>Method Not Allowed</p>
+        <p><a href="/">Go back to the homepage</a></p>
+        <span class="centerAlign">
+        <img src="{{ url_for('static', filename='images/404.png') }}" alt="404 Not Found">
+        </span>
+    </div>
+</body>
+</html>
