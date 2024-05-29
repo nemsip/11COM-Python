@@ -78,6 +78,16 @@ def x():
 def page_not_found(error):
     return render_template('404.html'), 404
 
+@app.route('/numbers')
+def numbers():
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    return render_template('numbers.html', numbers=numbers)
+
+@app.route('/planets')
+def planets():
+    planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+    return render_template('planets.html', planets=planets)
+
 @app.route('/profile')
 def profile():
     birth_year = '2008-06-17'
@@ -91,8 +101,13 @@ def profile():
         'age': age_rn,
         'hobbies': 'Coding, Music, Reading',
     }
+    socials = ['X', 'Instagram', 'Github', 'Youtube', 'Signal', 'ToxChat', 'Squaddr']
+    return render_template('profile.html', user_data=user_data, socials=socials)
+    
+    
 
-    return render_template('profile.html', user_data=user_data)
+    
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
