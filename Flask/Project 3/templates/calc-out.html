@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calucated!</title>
+</head>
+
+<style>
+    .done {
+        font-size: 24px;
+        color: green;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    
+    }
+</style>
+
+<body>
+    <h1>Your results has been calculated!</h1>
+
+    <h2>First Number: {{ num1 }}</h2>
+    <h2>Second Number: {{ num2 }}</h2>
+    <h2>Operation: {{ oper }}</h2>
+
+    {% if oper == "add" %}
+    {{ result }} = {{ num1 + num2 }}
+    {% elif oper == "subtract" %}
+    {{ result }} = {{ num1 - num2 }}
+    {% elif oper == "multiply" %}
+    {{ result }} = {{ num1 * num2 }}
+    {% elif oper == "divide" %}
+    {{ result }} = {{ num1 / num2 }}
+    {% endif %} 
+
+    <p class="done">{{ num1 }} {{ oper }} {{ num2 }} = {{ result }}</p>
+
+    <button onclick="window.location.href='/calc-in'">Go Back</button>
+</body>
+</html>
