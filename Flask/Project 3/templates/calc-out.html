@@ -31,20 +31,32 @@
 
     <h2>First Number: {{ num1 }}</h2>
     <h2>Second Number: {{ num2 }}</h2>
-    <h2>Operation: {{ oper }}</h2>
 
-    {% if oper == "add" %}
-    {{ result }} = {{ num1 + num2 }}
-    {% elif oper == "subtract" %}
-    {{ result }} = {{ num1 - num2 }}
-    {% elif oper == "multiply" %}
-    {{ result }} = {{ num1 * num2 }}
-    {% elif oper == "divide" %}
-    {{ result }} = {{ num1 / num2 }}
+    {% if oper == "+" %}
+    <h2>Operation: Addition</h2>
+    {% set result  =  num1 + num2 %}
+
+    {% elif oper == "-" %}
+    <h2>Operation: Subtraction</h2>
+    {% set result = num1 - num2 %}
+
+    {% elif oper == "*" %}
+    <h2>Operation: Multiplication</h2>
+    {% set result  =  num1 * num2 %}
+
+    {% elif oper == "/" %}
+    <h2>Operation: Division</h2>
+    {% set result = num1 / num2 %}
     {% endif %} 
 
+    {% if result|int == result %}
+    <p class="done">{{ num1 }} {{ oper }} {{ num2 }} = {{ result|int }}</p>
+    {% else %}
     <p class="done">{{ num1 }} {{ oper }} {{ num2 }} = {{ result }}</p>
+    {% endif %}
 
-    <button onclick="window.location.href='/calc-in'">Go Back</button>
+    <button onclick="window.location.href='/calculate'">Go Back</button>
+    <br><br>
+
 </body>
 </html>
