@@ -11,38 +11,60 @@
     <header class="bg-gray-800 text-white p-4">
         <h1 class="text-2xl font-bold"><i class="text-green-500">Uni</i>Score</h1>
     </header>
-
+    
     <main class="flex-grow flex items-center justify-center bg-white rounded-lg shadow-md p-6">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-4">Rank Score Result</h2>
             <p class="text-xl text-gray-600 mb-8">See your derived grade for university entrance right here.</p>
-
             <div class="bg-white rounded-lg shadow-md p-6">
-                <!-- DO THIS JINJA STUFF!!!!!!! -->
-                <!-- DO THIS JINJA STUFF!!!!!!! -->
-                <!-- DO THIS JINJA STUFF!!!!!!! -->
-
-                {% if rank_score %}
-                    <h3 class="text-2xl font-bold mb-4">Your Rank Score is: {{ rank_score }}</h3>
-                    {% if rank_score >= 320 %}
-                        <p class="text-green-600 font-semibold">Endorsed with Excellence!</p>
-                    {% elif rank_score >= 160 %}
-                        <p class="text-yellow-600 font-semibold">Endorsed with Merit!</p>
+                {% set achieved = achieved | default(0) %}
+                {% set merit = merit | default(0) %}
+                {% set excellence = excellence | default(0) %}
+                {% set total_credits = achieved + merit + excellence %}
+                {% set rank_score = 0 %}
+                {% if total_credits >= 80 %}
+                    <p>You got <strong>NCEA level 1</strong></p>
+                    {% if excellence >= 50 %}
+                        <p>Endorsed with excellence!</p>
+                    {% elif merit + excellence >= 50 %}
+                        <p>Endorsed with merit!</p>
                     {% else %}
-                        <p class="text-red-600 font-semibold">No endorsement.</p>
+                        <p>No endorsement.</p>
                     {% endif %}
+                    
+                    {% set remaining_credits = 80 %}
+                    {% for _ in range(excellence) %}
+                        {% if remaining_credits > 0 %}
+                            {% set rank_score = rank_score + 4 %}
+                            {% set remaining_credits = remaining_credits - 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for _ in range(merit) %}
+                        {% if remaining_credits > 0 %}
+                            {% set rank_score = rank_score + 3 %}
+                            {% set remaining_credits = remaining_credits - 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for _ in range(achieved) %}
+                        {% if remaining_credits > 0 %}
+                            {% set rank_score = rank_score + 2 %}
+                            {% set remaining_credits = remaining_credits - 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <p>Your rank score: {{ rank_score }}</p>
                 {% else %}
-                    <p class="text-red-600 font-semibold">Please enter valid credits to calculate your rank score.</p>
+                    <p>Please enter valid credits to calculate your rank score. You need at least 80 credits.</p>
                 {% endif %}
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4 bottom-0 w-full">
+    <footer class="bg-gray-800 text-white py-4 w-full">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2024 UniScore. All rights reserved.</p>
-            <small>Not a real company pls don't sue 🙏<br><br>Made by Nemith Wijesiri for 11COM NCEA Practice</small>
+            <small>Not a real company pls don't sue 🙏</small>
+            <small>Made by Nemith Wijesiri for 11COM NCEA Practice</small>
         </div>
     </footer>
 </body>
