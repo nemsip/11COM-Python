@@ -8,7 +8,7 @@ def index():
         achieved = int(request.form['achieved'])
         merit = int(request.form['merit'])
         excellence = int(request.form['excellence'])
-        print(f"Achieved: {achieved}, Merit: {merit}, Excellence: {excellence}") # Debugging because was not work
+        print(f"Achieved: {achieved}, Merit: {merit}, Excellence: {excellence}") # debugging because was not work
         return render_template('result.html', achieved=achieved, merit=merit, excellence=excellence)
     return render_template('index.html')
 
