@@ -11,7 +11,7 @@
     <header class="bg-gray-800 text-white p-4">
         <h1 class="text-2xl font-bold"><i class="text-green-500">Uni</i>Score</h1>
     </header>
-    
+
     <main class="flex-grow flex items-center justify-center bg-white rounded-lg shadow-md p-6">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-4">Rank Score Result</h2>
@@ -22,36 +22,24 @@
                 {% set excellence = excellence | default(0) %}
                 {% set total_credits = achieved + merit + excellence %}
                 {% set rank_score = 0 %}
+                {% set credit_count = 0 %}
+
                 {% if total_credits >= 80 %}
-                    <p>You got <strong>NCEA level 1</strong></p>
+                    <h3>You got <strong>NCEA level 1</strong></h3>
                     {% if excellence >= 50 %}
-                        <p>Endorsed with excellence!</p>
+                        <p><strong>Endorsed</strong> with <strong>excellence!</strong></p>
                     {% elif merit + excellence >= 50 %}
                         <p>Endorsed with merit!</p>
                     {% else %}
                         <p>No endorsement.</p>
                     {% endif %}
-                    
-                    {% set remaining_credits = 80 %}
-                    {% for _ in range(excellence) %}
-                        {% if remaining_credits > 0 %}
-                            {% set rank_score = rank_score + 4 %}
-                            {% set remaining_credits = remaining_credits - 1 %}
-                        {% endif %}
-                    {% endfor %}
-                    {% for _ in range(merit) %}
-                        {% if remaining_credits > 0 %}
-                            {% set rank_score = rank_score + 3 %}
-                            {% set remaining_credits = remaining_credits - 1 %}
-                        {% endif %}
-                    {% endfor %}
-                    {% for _ in range(achieved) %}
-                        {% if remaining_credits > 0 %}
-                            {% set rank_score = rank_score + 2 %}
-                            {% set remaining_credits = remaining_credits - 1 %}
-                        {% endif %}
-                    {% endfor %}
-                    
+
+                    {% set excellence = min(80, excellence) %}
+                    {% set merit = min(80 - excellence, merit) %}
+                    {% set achieved = min(80 - excellence - merit, achieved) %}
+ 
+                    {% set rank_score = 4 * excellence + 3 * merit + 2 * achieved %}
+
                     <p>Your rank score: {{ rank_score }}</p>
                 {% else %}
                     <p>Please enter valid credits to calculate your rank score. You need at least 80 credits.</p>
