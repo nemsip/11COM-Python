@@ -26,4 +26,4 @@ def forbidden(e):
     return render_template('sys/403.html'), 403
 
 if __name__ == '__main__':
-    app.run(debug=True, port=80)
+    app.run(port=80)
