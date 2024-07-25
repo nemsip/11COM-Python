@@ -40,7 +40,7 @@
  
                     {% set rank_score = 4 * excellence + 3 * merit + 2 * achieved %}
 
-                    <p>Your rank score: {{ rank_score }}</p>
+                    <p>Your rank score: <strong>{{ rank_score }}</strong></p>
                 {% else %}
                     <p>Please enter valid credits to calculate your rank score. You need at least 80 credits.</p>
                 {% endif %}
