@@ -1,3 +1,5 @@
+# DO NOT RUN THIS FILE! RUN "waitress-serve --listen=127.0.0.1:80 main:app" IN THE CURRENT DIR TO START THE SERVER
+
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -8,7 +10,6 @@ def index():
         achieved = int(request.form['achieved'])
         merit = int(request.form['merit'])
         excellence = int(request.form['excellence'])
-        print(f"Achieved: {achieved}, Merit: {merit}, Excellence: {excellence}") # debugging because was not work
         return render_template('result.html', achieved=achieved, merit=merit, excellence=excellence, min=min)
     return render_template('index.html')
 
