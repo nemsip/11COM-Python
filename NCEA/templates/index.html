@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background-image: url("../static/images/done 1.png");
+            background-image: url("../static/images/background-koru.png");
             background-size: cover;
             font-family: 'Poppins', sans-serif;
         }
@@ -49,9 +49,16 @@
         }
         #pakeha.selected {
             background-color: #5cbf60;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 3px;
         }
         #maori.selected {
             background-color: #5cbf60;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 3px;
+
         }
     </style>
 </head>
@@ -67,26 +74,75 @@
                     <button id="maori" class="button" style="width: 100px; height: 40px;">Māori</button>
                 </div>
             </div>
-            <form>
-                <input type="text" placeholder="NAME" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                <input type="text" placeholder="FAMILY NAME" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                <input type="text" placeholder="HOME" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                <input type="text" placeholder="OCEAN" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                <input type="text" placeholder="MOUNTAIN" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                <input type="text" placeholder="RIVER" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                <input type="text" placeholder="ANCESTRY" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+            <form id="pakehaForm" action="/" method="post">
+                <label for="name" class="text-sm">Name</label>
+                <input type="text" name="name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="family-name" class="text-sm">Family Name</label>
+                <input type="text" name="family-name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="home" class="text-sm">Home</label>
+                <input type="text" name="home" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="ocean" class="text-sm">Ocean</label>
+                <input type="text" name="ocean" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="mountain" class="text-sm">Mountain</label>
+                <input type="text" name="mountain" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="river" class="text-sm">River</label>
+                <input type="text" name="river" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="ancestry" class="text-sm">Ancestry</label>
+                <input type="text" name="ancestry" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
                 <button type="submit" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">GENERATE</button>
+            </form>
+            <form id="maoriForm" style="display: none;" action="/" method="post">
+                <label for="ingoa" class="text-sm">Ingoa (Name)</label>
+                <input type="text" name="ingoa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="whanau" class="text-sm">Whānau (Family)</label>
+                <input type="text" name="whanau" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="marae" class="text-sm">Marae</label>
+                <input type="text" name="marae" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="iwi" class="text-sm">Iwi (Tribe)</label>
+                <input type="text" name="iwi" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="maunga" class="text-sm">Maunga (Mountain)</label>
+                <input type="text" name="maunga" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="awa" class="text-sm">Awa (River)</label>
+                <input type="text" name="awa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <label for="waka" class="text-sm">Waka (Canoe)</label>
+                <input type="text" name="waka" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                
+                <button type="submit" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">WHAKAPUTA (GENERATE)</button>
             </form>
         </div>
     </div>
     <script>
-        // tjis is where my knowlege of javascript ends.
+        // rhis is where my javascript knowlege ends
         const buttons = document.querySelectorAll('.button');
+        const pakehaForm = document.getElementById('pakehaForm');
+        const maoriForm = document.getElementById('maoriForm');
+
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 buttons.forEach(btn => btn.classList.remove('selected'));
                 button.classList.add('selected');
-                console.log("Button Toggled")
+                
+                if (button.id === 'pakeha') {
+                    pakehaForm.style.display = 'block';
+                    maoriForm.style.display = 'none';
+                } else if (button.id === 'maori') {
+                    pakehaForm.style.display = 'none';
+                    maoriForm.style.display = 'block';
+                }
+                console.log("Button Toggled");
             });
         });
     </script>
