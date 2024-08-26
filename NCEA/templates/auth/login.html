@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+    body {
+        background-image: url("/static/images/background-koru.png");
+        background-size: cover;
+        font-family: 'Poppins', sans-serif;
+    }
+    .button-container {
+        display: flex;
+        gap: 8px;
+        transform: scale(0.9);
+        margin: 0 auto;
+        align-items: center;
+    }
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    }
+    .button.selected {
+        transform: scale(1.1);
+        font-size: 15px;
+        padding: 14px 28px;
+        box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2);
+    }
+    #login {
+        background-color: #45a049;
+        border-radius: 20px 0 0 20px;
+    }
+    #signup {
+        background-color: #45a049;
+        border-radius: 0 20px 20px 0;
+    }
+    #login.selected, #signup.selected {
+        background-color: #5cbf60;
+    }
+    .custom-shadow-more {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .form-container {
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .form-content {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+</style>
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <div class="bg-green-900 text-green-300 p-4 rounded-lg mb-4 shadow-2xl">
+            <h1 id="formTitle" class="text-2xl font-bold text-center">LOGIN</h1>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl">
+            <div class="flex space-x-2 mb-4">
+                <div class="button-container">
+                    <a href="/login" id="login" class="button selected" style="width: 100px; height: 40px;">Login</a>
+                    <a href="/signup" id="signup" class="button" style="width: 100px; height: 40px;">Signup</a>
+                </div>
+            </div>
+            <div class="form-container">
+                <form id="loginForm" class="form-content">
+                    <label for="username" class="text-sm" >Username</label>
+                    <input type="text" name="username" required class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="password" class="text-sm" >Password</label>
+                    <input type="password" name="password" required class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <button type="submit" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">LOGIN</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="/static/js/login.js"></script> -->
+</body>
+</html>
