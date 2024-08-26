@@ -74,6 +74,8 @@
                 </div>
             </div>
             <form id="pakehaForm" action="/" method="post">
+                <input name="ethnicity" value="pakeha" type="hidden">
+
                 <label for="name" class="text-sm">Name</label>
                 <input type="text" name="name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
                 
@@ -98,6 +100,7 @@
                 <button type="submit" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">GENERATE</button>
             </form>
             <form id="maoriForm" style="display: none;" action="/" method="post">
+                <input name="ethnicity" value="maori" type="hidden">
                 <label for="ingoa" class="text-sm">Ingoa (Name)</label>
                 <input type="text" name="ingoa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
                 
