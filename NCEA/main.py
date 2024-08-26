@@ -50,12 +50,6 @@ def home():
             mountain = request.form.get('mountain')
             river = request.form.get('river')
             ancestry = request.form.get('ancestry')
-            
-            # ok so it doesnt even work
-            try:
-                print("name: ", name)
-            except:
-                print("ldjlkjdfg") 
         
         return render_template('result.html',
                                # there has to be a better way to do this 😭    
@@ -76,7 +70,7 @@ def home():
                                waka=waka if request.form.get('ethnicity') == 'maori' else None,
                                
                                ethnicity=ethnicity)
-    return render_template('indecx.html')
+    return render_template('index.html')
 
 def signup():
     if request.method == 'POST':
