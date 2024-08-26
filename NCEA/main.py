@@ -3,6 +3,8 @@ import traceback
 from flask import Flask, render_template, request, flash, sessions, redirect
 import re
 from datetime import datetime
+import sqlite3
+import bcrypt
 
 app = Flask(__name__)
 
@@ -74,21 +76,8 @@ def home():
                                waka=waka if request.form.get('ethnicity') == 'maori' else None,
                                
                                ethnicity=ethnicity)
-    return render_template('index.html')
+    return render_template('indecx.html')
 
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        # sql query to check if user exists
-        # validate user
-        # validate pwd
-        # login success
-        
-    return render_template('auth/login.html')
-
-@app.route("/signup", methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         username = request.form['username']
@@ -111,8 +100,49 @@ def signup():
         # add user to db
         # signup success
         # login user
-
+        
+        hpass = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+        
+        with sqlite3.connect('./db/login.db') as con:
+            cur = con.cursor()  
+            cur.execute("SELECT * FROM users WHERE username = ?", (username,))
+            if cur.fetchone():
+                flash('Username already exists.')
+            else:
+                cur.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hpass))
+                con.commit()
+                return redirect('/login')
     return render_template('auth/signup.html')
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        # sql query to check if user exists
+        # validate user
+        # validate pwd
+        # login success
+        
+        with sqlite3.connect('./db/login.db') as con:
+            cur = con.cursor()
+            cur.execute("SELECT * FROM users WHERE username = ?", (username, password))
+            user = cur.fetchone()
+            if user:
+                if bcrypt.checkpw(password.encode(), user[2]):
+                    return redirect('/')
+                else:
+                    flash('Invalid password.')
+            else:
+                flash('User does not exist.')
+                return redirect('/login')
+            
+            
+        
+        
+    return render_template('auth/login.html')
+
+@app.route("/signup", methods=['GET', 'POST'])
 
 @app.errorhandler(404)
 def page_not_found(e):
