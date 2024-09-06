@@ -37,43 +37,72 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-300 min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md">
-        <div class="bg-green-900 text-green-300 p-4 rounded-lg mb-4 shadow-2xl">
-            <h1 class="text-2xl font-bold text-center">YOUR PEPEHA</h1>
+
+
+<body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
+
+    <header class="bg-green-900 text-green-300 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Pepeha Generator</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="hover:text-white">Home</a></li>
+                    <li><a href="/about-pepeha" class="hover:text-white">Learn</a></li>
+                    <li><a href="/login" class="hover:text-white">Login</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-2xl">
-            <div id="pepehaResult" class="pepeha-text text-center mb-6">
-                {% if ethnicity == 'pakeha' %}
-                    Ko {{ name }} tōku ingoa.<br>
-                    Nō {{ home }} ahau.<br>
-                    Ko {{ ocean }} te moana.<br>
-                    Ko {{ mountain }} te maunga.<br>
-                    Ko {{ river }} te awa.<br>
-                    Ko {{ ancestry }} ōku tīpuna.<br>
-                    Ko {{ family_name }} te whānau.
-                    
-                {% elif ethnicity == 'maori' %}
-                    Ko {{ maunga }} te maunga.<br>
-                    Ko {{ awa }} te awa.<br>
-                    Ko {{ waka }} te waka.<br>
-                    Ko {{ iwi }} te iwi.<br>
-                    Ko {{ marae }} te marae.<br>
-                    Ko {{ whanau }} te whānau.<br>
-                    Ko {{ ingoa }} tōku ingoa.
-                {% endif %}
+    </header>
+    
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <div class="bg-green-900 text-green-300 p-4 rounded-lg mb-4 shadow-2xl">
+                <h1 class="text-2xl font-bold text-center">YOUR PEPEHA</h1>
             </div>
-            <div class="relative">
-                <button id="copyButton" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">
-                    COPY TO CLIPBOARD
-                    <svg class="tick-icon w-6 h-6 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                </button>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-2xl">
+                <div id="pepehaResult" class="pepeha-text text-center mb-6">
+                    {% if ethnicity == 'pakeha' %}   
+                        Tēnā koutou katoa<br>
+                        Ko {{ mountain }} te maunga.<br>
+                        Ko {{ river }} te awa.<br>
+                        Nō {{ home }} ahau.<br>
+                        Ko {{ family_name }} te whānau.<br>
+                        Ko {{ name }} tōku ingoa.
+                        Tēnā tātou katoa
+                    {% elif ethnicity == 'maori' %}
+                        Tēnā koutou katoa<br>
+                        Ko {{ maunga }} te maunga.<br>
+                        Ko {{ awa }} te awa.<br>
+                        Ko {{ waka }} te waka.<br>
+                        Ko {{ iwi }} te iwi.<br>
+                        Ko {{ marae }} te marae.<br>
+                        Ko {{ whanau }} te whānau.<br>
+                        Ko {{ ingoa }} tōku ingoa.
+                        Tēnā tātou katoa
+                    {% endif %}
+                </div>
+                <div class="relative">
+                    <button id="copyButton" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">
+                        COPY TO CLIPBOARD
+                        <svg class="tick-icon w-6 h-6 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); margin-top: -3px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </button>
+                </div>
+                <a href="/" class="block w-full bg-green-700 text-green-100 p-3 rounded mt-4 text-sm text-center custom-shadow-more hover:bg-green-600 transition duration-300">GENERATE ANOTHER</a>
             </div>
-            <a href="/" class="block w-full bg-green-700 text-green-100 p-3 rounded mt-4 text-sm text-center custom-shadow-more hover:bg-green-600 transition duration-300">GENERATE ANOTHER</a>
         </div>
-    </div>
+    </main>
+
+    <footer class="bg-green-900 text-green-300 p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Pepeha Generator. All rights reserved.</p>
+            <div class="mt-2">
+                <a href="/privacy" class="hover:text-white mr-4">Privacy Policy</a>
+                <a href="/terms" class="hover:text-white">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('copyButton').addEventListener('click', function() {
@@ -85,7 +114,7 @@
                 setTimeout(() => {
                     tickIcon.style.display = 'none';
                     tickIcon.classList.remove('tick-animation');
-                }, 1500);
+                }, 500);
             }, function(err) {
                 console.error('Could not copy text: ', err);
             });
