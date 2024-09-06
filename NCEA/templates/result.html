@@ -33,14 +33,14 @@
             100% { opacity: 0; }
         }
         .tick-animation {
-            animation: fadeInOut 1.5s ease-in-out;
-        }
+            animation: fadeInOut 1s ease-in-out;
+        }        
     </style>
 </head>
 
 
 <body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
-
+    
     <header class="bg-green-900 text-green-300 p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold">Pepeha Generator</h1>
@@ -82,12 +82,13 @@
                     {% endif %}
                 </div>
                 <div class="relative">
-                    <button id="copyButton" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">
+                    <button id="copyButton" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more flex items-center justify-center">
                         COPY TO CLIPBOARD
-                        <svg class="tick-icon w-6 h-6 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); margin-top: -3px;">
+                        <svg class="tick-icon w-6 h-6 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                     </button>
+                    
                 </div>
                 <a href="/" class="block w-full bg-green-700 text-green-100 p-3 rounded mt-4 text-sm text-center custom-shadow-more hover:bg-green-600 transition duration-300">GENERATE ANOTHER</a>
             </div>
@@ -111,14 +112,16 @@
                 const tickIcon = document.querySelector('.tick-icon');
                 tickIcon.style.display = 'inline-block';
                 tickIcon.classList.add('tick-animation');
-                setTimeout(() => {
+                
+                tickIcon.addEventListener('animationend', function() {
                     tickIcon.style.display = 'none';
                     tickIcon.classList.remove('tick-animation');
-                }, 500);
+                }, { once: true });
+        
             }, function(err) {
                 console.error('Could not copy text: ', err);
             });
-        });
+        }); 
     </script>
 </body>
 </html>
