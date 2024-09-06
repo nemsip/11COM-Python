@@ -52,8 +52,6 @@ def home():
             home = request.form.get('home')
             ocean = request.form.get('ocean')
             mountain = request.form.get('mountain')
-            river = request.form.get('river')
-            ancestry = request.form.get('ancestry')
         
         return render_template('result.html',
                                # there has to be a better way to do this 😭    
@@ -62,8 +60,6 @@ def home():
                                home=home if request.form.get('ethnicity') == 'pakeha' else None,
                                ocean=ocean if request.form.get('ethnicity') == 'pakeha' else None,
                                mountain=mountain if request.form.get('ethnicity') == 'pakeha' else None,
-                               river=river if request.form.get('ethnicity') == 'pakeha' else None,
-                               ancestry=ancestry if request.form.get('ethnicity') == 'pakeha' else None,
                                
                                ingoa=ingoa if request.form.get('ethnicity') == 'maori' else None,
                                whanau=whanau if request.form.get('ethnicity') == 'maori' else None,
@@ -76,12 +72,16 @@ def home():
                                ethnicity=ethnicity)
     return render_template('index.html')
 
+@app.route('/about-pepeha')
+def about_pepeha():
+    return render_template('about-pepeha.html')
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST' and not session.get('logged_in'):
         username = request.form.get('username')
         password = request.form.get('password')
-
+    
         with sqlite3.connect('./db/login.db') as con:
             # fucking kill me
             pass
@@ -105,11 +105,6 @@ def signup():
 
         if password != confirm_password:
             flash('Passwords do not match.')
-        
-        # sql query to check if user already exists
-        # add user to db
-        # signup success
-        # login user
         
         hpass = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
         
