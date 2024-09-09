@@ -1,8 +1,12 @@
 Check the non-maori/ maori forms with the maori teacher to see if its okay
-fix copied to clipboard checkmark
-Add translation from english place names to maori with groq
-Add privacy policy and terms of service
-add link embed
-add favicon
-get logging in working (extra)
 
+Add translation from english place names to maori with groq (half done - clean the api response and only take the translated data)
+
+Add privacy policy and terms of service
+
+add link embed
+
+add favicon
+
+get logging in working (extra)
+- impliment generator usage limits
