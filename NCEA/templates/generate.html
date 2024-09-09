@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepeha Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("../static/images/background-koru.png");
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            background-attachment: fixed;
+        }
+    
+        .button-container {
+            display: flex;
+            gap: 8px;
+            transform: scale(0.9); 
+            margin: 0 auto;
+            align-items: center;
+        }
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px; 
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+        }
+        .button.selected {
+            transform: scale(1.1);
+            font-size: 15px; 
+            padding: 14px 28px; 
+            box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2); 
+        }
+        #pakeha {
+            background-color: #45a049;
+            border-radius: 20px 0 0 20px; 
+        }
+        #maori {
+            background-color: #45a049;
+            border-radius: 0 20px 20px 0;
+        }
+        #pakeha.selected {
+            background-color: #5cbf60;
+        }
+        #maori.selected {
+            background-color: #5cbf60;
+        }
+        button:disabled {
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
+
+    <header class="bg-green-900 text-green-300 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Pepeha Generator</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="hover:text-white">Home</a></li>
+                    <li><a href="/about-pepeha" class="hover:text-white">Learn</a></li>
+                    <li><a href="/login" class="hover:text-white">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <div class="bg-green-900 text-green-300 p-4 rounded-lg mb-4 shadow-2xl">
+                <h1 class="text-2xl font-bold text-center">PEPEHA GENERATOR</h1>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-2xl">
+                <div class="flex space-x-2 mb-4">
+                    <div class="button-container">
+                        <button id="pakeha" class="button selected" style="width: 100px; height: 40px;">Pakeha</button>
+                        <button id="maori" class="button" style="width: 100px; height: 40px;">Māori</button>
+                    </div>
+                </div>
+                <form id="pakehaForm" action="/generate" method="post">
+                    <input name="ethnicity" value="pakeha" type="hidden">
+
+                    <label for="name" class="text-sm">Name (aka John)</label>
+                    <input type="text" name="name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="family-name" class="text-sm">Family Name (aka Doe)</label>
+                    <input type="text" name="family-name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="home" class="text-sm">Home (aka Auckland)</label>
+                    <input type="text" name="home" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="river" class="text-sm">River (aka Manukau River)</label>
+                    <input type="text" name="river" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+
+                    <label for="mountain" class="text-sm">Mountain (aka Mt Wellington)</label>
+                    <input type="text" name="mountain" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <button type="submit" id="generatePakeha" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more" disabled>GENERATE</button>
+                </form>
+                <form id="maoriForm" style="display: none;" action="/generate" method="post">
+                    <input name="ethnicity" value="maori" type="hidden">
+                    <label for="ingoa" class="text-sm">Ingoa (Name)</label>
+                    <input type="text" name="ingoa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="whanau" class="text-sm">Whānau (Family)</label>
+                    <input type="text" name="whanau" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="marae" class="text-sm">Marae</label>
+                    <input type="text" name="marae" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="iwi" class="text-sm">Iwi (Tribe)</label>
+                    <input type="text" name="iwi" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="maunga" class="text-sm">Maunga (Mountain)</label>
+                    <input type="text" name="maunga" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="awa" class="text-sm">Awa (River)</label>
+                    <input type="text" name="awa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <label for="waka" class="text-sm">Waka (Canoe)</label>
+                    <input type="text" name="waka" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+                    
+                    <button type="submit" id="generateMaori" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more" disabled>WHAKAPUTA (GENERATE)</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-green-900 text-green-300 p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Pepeha Generator. All rights reserved.</p>
+            <div class="mt-2">
+                <a href="/privacy" class="hover:text-white mr-4">Privacy Policy</a>
+                <a href="/terms" class="hover:text-white">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const buttons = document.querySelectorAll('.button');
+        const pakehaForm = document.getElementById('pakehaForm');
+        const maoriForm = document.getElementById('maoriForm');
+        const pakehaInputs = pakehaForm.querySelectorAll('input[type="text"]');
+        const maoriInputs = maoriForm.querySelectorAll('input[type="text"]');
+        const generatePakeha = document.getElementById('generatePakeha');
+        const generateMaori = document.getElementById('generateMaori');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+                
+                if (button.id === 'pakeha') {
+                    pakehaForm.style.display = 'block';
+                    maoriForm.style.display = 'none';
+                } else if (button.id === 'maori') {
+                    pakehaForm.style.display = 'none';
+                    maoriForm.style.display = 'block';
+                }
+            });
+        });
+
+        const handleInput = (inputs, button) => {
+            let isAnyFilled = Array.from(inputs).some(input => input.value.trim() !== '');
+            button.disabled = !isAnyFilled;
+            button.classList.toggle('bg-green-700', isAnyFilled);
+        };
+
+        pakehaInputs.forEach(input => {
+            input.addEventListener('input', () => handleInput(pakehaInputs, generatePakeha));
+        });
+
+        maoriInputs.forEach(input => {
+            input.addEventListener('input', () => handleInput(maoriInputs, generateMaori));
+        });
+    </script>
+</body>
+</html>

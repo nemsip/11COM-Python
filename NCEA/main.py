@@ -5,6 +5,9 @@ import re
 from datetime import datetime
 import sqlite3
 import bcrypt
+import groq
+from groq import Groq
+
 
 app = Flask(__name__)
 
@@ -31,10 +34,13 @@ def log_error(error):
         print(f"Failed to log error: {log_exception}")
 
 @app.route('/', methods=['GET', 'POST'])
-def home():
+def index():
     if session.get('logged_in'):
         flash(f'Logged in as {session["username"]}')
-
+    return render_template('index.html')
+    
+@app.route('/generate', methods=['GET', 'POST'])
+def generate():
     if request.method == 'POST':
         ethnicity = request.form.get('ethnicity')
         if ethnicity == 'maori':
@@ -52,12 +58,33 @@ def home():
             home = request.form.get('home')
             ocean = request.form.get('ocean')
             mountain = request.form.get('mountain')
+            
+            
+            
+            client = Groq(api_key="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")
+            
+            system_prompt = {
+                "role": "system",
+                "content":
+                "You are a Translator that translates english new zealand place anmes into their traditional name in the Maori Language. For example, Auckland is Tāmaki Makaurau. You reply with JUST the translated name. If you don't know the name, reply with \"Error\". Don't add any extra text. Only reply with the translated name. Do not hallucinate, which means do not make up a name that doesn't exist. If the name is not in the Maori language or you don't know, reply with \"Error\". If the name is not in english and is in Maori, do not translate. If the name is in both languages or a mix of both, translate it into Maori. Do not translate the name into any other language other than Maori. Just translate it into Maori. You can only translate one name at a time.",
+            }
+
+            chat_history = [system_prompt]
+            
+
+            textToTranslate = home
+            chat_history.append({"role": "user", "content": textToTranslate})
+            response = client.chat.completions.create(model="llama3-70b-8192", messages=chat_history, max_tokens=50, temperature=1.2)
+            print(response)
+            
+            homeTranslated = response
+
         
         return render_template('result.html',
                                # there has to be a better way to do this 😭    
                                name=name if request.form.get('ethnicity') == 'pakeha' else None,
                                family_name=family_name if request.form.get('ethnicity') == 'pakeha' else None,
-                               home=home if request.form.get('ethnicity') == 'pakeha' else None,
+                               homeTranslated=homeTranslated if request.form.get('ethnicity') == 'pakeha' else None,
                                ocean=ocean if request.form.get('ethnicity') == 'pakeha' else None,
                                mountain=mountain if request.form.get('ethnicity') == 'pakeha' else None,
                                
@@ -70,7 +97,7 @@ def home():
                                waka=waka if request.form.get('ethnicity') == 'maori' else None,
                                
                                ethnicity=ethnicity)
-    return render_template('index.html')
+    return render_template('generate.html')
 
 @app.route('/about-pepeha')
 def about_pepeha():
