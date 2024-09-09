@@ -13,53 +13,13 @@
             font-family: 'Poppins', sans-serif;
             background-attachment: fixed;
         }
-    
-        .button-container {
-            display: flex;
-            gap: 8px;
-            transform: scale(0.9); 
-            margin: 0 auto;
-            align-items: center;
+        .hero {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 4rem 0;
+            border-radius: 10px;
         }
-        .button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 20px; 
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
-        }
-        .button.selected {
-            transform: scale(1.1);
-            font-size: 15px; 
-            padding: 14px 28px; 
-            box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2); 
-        }
-        #pakeha {
-            background-color: #45a049;
-            border-radius: 20px 0 0 20px; 
-        }
-        #maori {
-            background-color: #45a049;
-            border-radius: 0 20px 20px 0;
-        }
-        #pakeha.selected {
-            background-color: #5cbf60;
-            /* text-decoration: underline;
-            text-decoration-thickness: 3px;
-            text-underline-offset: 3px;*/
-        }
-        #maori.selected {
-            background-color: #5cbf60;
-            /* text-decoration: underline;
-            text-decoration-thickness: 3px;
-            text-underline-offset: 3px;*/;
+        .hero-content {
+            max-width: 700px;
         }
     </style>
 </head>
@@ -70,73 +30,38 @@
             <h1 class="text-2xl font-bold">Pepeha Generator</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="/" class="hover:text-white">Home</a></li>
-                    <li><a href="/about-pepeha" class="hover:text-white">Learn</a></li>
+                    <li><a href="#" class="hover:text-white">Home</a></li>
+                    <li><a href="#about" class="hover:text-white">About</a></li>
                     <li><a href="/login" class="hover:text-white">Login</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="flex-grow flex items-center justify-center p-4">
-        <div class="w-full max-w-md">
-            <div class="bg-green-900 text-green-300 p-4 rounded-lg mb-4 shadow-2xl">
-                <h1 class="text-2xl font-bold text-center">PEPEHA GENERATOR</h1>
+    <main class="flex-grow">
+        <section class="hero bg-gray-800 text-gray-300 text-center">
+            <div class="container mx-auto hero-content p-8 rounded-lg">
+                <h2 class="text-4xl font-bold mb-4">Welcome to the Pepeha Generator</h2>
+                <p class="text-lg mb-8">Craft and share your pepeha with ease. Whether you're introducing yourself or your family, our tool makes it simple to generate a pepeha that reflects your heritage.</p>
+                <a href="/generate" class="bg-green-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-green-800 transition duration-300">Get Started</a>
             </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-2xl">
-                <div class="flex space-x-2 mb-4">
-                    <div class="button-container">
-                        <button id="pakeha" class="button selected" style="width: 100px; height: 40px;">Pakeha</button>
-                        <button id="maori" class="button" style="width: 100px; height: 40px;">Māori</button>
-                    </div>
-                </div>
-                <form id="pakehaForm" action="/" method="post">
-                    <input name="ethnicity" value="pakeha" type="hidden">
+        </section>
 
-                    <label for="name" class="text-sm">Name (aka John)</label>
-                    <input type="text" name="name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="family-name" class="text-sm">Family Name (aka Doe)</label>
-                    <input type="text" name="family-name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="home" class="text-sm">Home (aka Auckland)</label>
-                    <input type="text" name="home" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="river" class="text-sm">River (aka Manukau River)</label>
-                    <input type="text" name="river" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-
-                    <label for="mountain" class="text-sm">Mountain (aka Mt Wellington)</label>
-                    <input type="text" name="mountain" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <button type="submit" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">GENERATE</button>
-                </form>
-                <form id="maoriForm" style="display: none;" action="/" method="post">
-                    <input name="ethnicity" value="maori" type="hidden">
-                    <label for="ingoa" class="text-sm">Ingoa (Name)</label>
-                    <input type="text" name="ingoa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="whanau" class="text-sm">Whānau (Family)</label>
-                    <input type="text" name="whanau" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="marae" class="text-sm">Marae</label>
-                    <input type="text" name="marae" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="iwi" class="text-sm">Iwi (Tribe)</label>
-                    <input type="text" name="iwi" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="maunga" class="text-sm">Maunga (Mountain)</label>
-                    <input type="text" name="maunga" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="awa" class="text-sm">Awa (River)</label>
-                    <input type="text" name="awa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <label for="waka" class="text-sm">Waka (Canoe)</label>
-                    <input type="text" name="waka" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-                    
-                    <button type="submit" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more">WHAKAPUTA (GENERATE)</button>
-                </form>
+        <section id="about" class="py-12 bg-gray-800">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">About the Pepeha Generator</h2>
+                <p class="text-lg mb-6">The Pepeha Generator helps you create a pepeha that can be used in introductions, presentations, and cultural settings. A pepeha is a traditional Māori way of introducing oneself and connecting with one's heritage.</p>
+                <p class="text-lg">By filling out a simple form, you can generate a pepeha that includes your name, family, home, and other personal details. It's a meaningful way to share your identity and cultural background.</p>
             </div>
-        </div>
+        </section>
+
+        <section id="get-started" class="py-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Ready to Create Your Pepeha?</h2>
+                <p class="text-lg mb-8">Start generating your pepeha now by clicking the button below. Follow the prompts to input your details, and you’ll have a personalized pepeha ready in no time!</p>
+                <a href="/generate" class="bg-green-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-green-800 transition duration-300">Generate Your Pepeha</a>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-green-900 text-green-300 p-4 mt-8">
@@ -149,27 +74,5 @@
         </div>
     </footer>
 
-    <script>
-        // rhis is where my javascript knowlege ends
-        const buttons = document.querySelectorAll('.button');
-        const pakehaForm = document.getElementById('pakehaForm');
-        const maoriForm = document.getElementById('maoriForm');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                buttons.forEach(btn => btn.classList.remove('selected'));
-                button.classList.add('selected');
-                
-                if (button.id === 'pakeha') {
-                    pakehaForm.style.display = 'block';
-                    maoriForm.style.display = 'none';
-                } else if (button.id === 'maori') {
-                    pakehaForm.style.display = 'none';
-                    maoriForm.style.display = 'block';
-                }
-                console.log("Button Toggled");
-            });
-        });
-    </script>
 </body>
 </html>
