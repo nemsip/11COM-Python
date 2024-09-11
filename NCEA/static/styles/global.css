@@ -1,0 +1,84 @@
+/* Custom Global CSS for base.html of the project */
+
+body {
+    background-image: url("../static/images/background-koru.png");
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    background-attachment: fixed;
+}
+.hero {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4rem 0;
+    border-radius: 10px;
+}
+.hero-content {
+    max-width: 700px;
+}
+.custom-shadow-more {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.pepeha-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+.tick-icon {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #48bb78;
+}
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.tick-animation {
+    animation: fadeInOut 1s ease-in-out;
+}
+/* Additional styles for generate page */
+.button-container {
+    display: flex;
+    gap: 8px;
+    transform: scale(0.9); 
+    margin: 0 auto;
+    align-items: center;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px; 
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+}
+.button.selected {
+    transform: scale(1.1);
+    font-size: 15px; 
+    padding: 14px 28px; 
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2); 
+}
+#pakeha {
+    background-color: #45a049;
+    border-radius: 20px 0 0 20px; 
+}
+#maori {
+    background-color: #45a049;
+    border-radius: 0 20px 20px 0;
+}
+#pakeha.selected {
+    background-color: #5cbf60;
+}
+#maori.selected {
+    background-color: #5cbf60;
+}
+button:disabled {
+    cursor: not-allowed;
+}
