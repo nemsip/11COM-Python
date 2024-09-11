@@ -9,7 +9,7 @@ import groq
 from groq import Groq
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 app.secret_key = 'skibidi'
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -56,36 +56,32 @@ def generate():
             name = request.form.get('name')
             family_name = request.form.get('family-name')
             home = request.form.get('home')
-            ocean = request.form.get('ocean')
+            river = request.form.get('river')
             mountain = request.form.get('mountain')
-            
-            
             
             client = Groq(api_key="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")
             
-            system_prompt = {
-                "role": "system",
-                "content":
-                "You are a Translator that translates english new zealand place anmes into their traditional name in the Maori Language. For example, Auckland is Tāmaki Makaurau. You reply with JUST the translated name. If you don't know the name, reply with \"Error\". Don't add any extra text. Only reply with the translated name. Do not hallucinate, which means do not make up a name that doesn't exist. If the name is not in the Maori language or you don't know, reply with \"Error\". If the name is not in english and is in Maori, do not translate. If the name is in both languages or a mix of both, translate it into Maori. Do not translate the name into any other language other than Maori. Just translate it into Maori. You can only translate one name at a time.",
-            }
+            def get_translation(text):
+                system_prompt = {
+                    "role": "system",
+                    "content": "You are a Translator that translates english new zealand place names into their traditional name in the Maori Language. For example, Auckland is Tāmaki Makaurau. You reply with JUST the translated name. If you don't know the name, reply with \"Error\". Don't add any extra text. Only reply with the translated name. Do not hallucinate, which means do not make up a name that doesn't exist. If the name is not in the Maori language or you don't know, reply with \"Error\". If the name is not in english and is in Maori, do not translate. If the name is in both languages or a mix of both, translate what isn't maori already into Maori. Do not translate the name into any other language other than Maori."
+                }
+                
+                chat_history = [system_prompt]
+                chat_history.append({"role": "user", "content": text})
+                
+                response = client.chat.completions.create(model="llama3-70b-8192", messages=chat_history, max_tokens=50, temperature=1.2)
+                                
+                return response.choices[0].message.content.strip()
 
-            chat_history = [system_prompt]
-            
-
-            textToTranslate = home
-            chat_history.append({"role": "user", "content": textToTranslate})
-            response = client.chat.completions.create(model="llama3-70b-8192", messages=chat_history, max_tokens=50, temperature=1.2)
-            print(response)
-            
-            homeTranslated = response
-
+            homeTranslated = get_translation(home)
         
         return render_template('result.html',
                                # there has to be a better way to do this 😭    
                                name=name if request.form.get('ethnicity') == 'pakeha' else None,
                                family_name=family_name if request.form.get('ethnicity') == 'pakeha' else None,
                                homeTranslated=homeTranslated if request.form.get('ethnicity') == 'pakeha' else None,
-                               ocean=ocean if request.form.get('ethnicity') == 'pakeha' else None,
+                               river=river if request.form.get('ethnicity') == 'pakeha' else None,
                                mountain=mountain if request.form.get('ethnicity') == 'pakeha' else None,
                                
                                ingoa=ingoa if request.form.get('ethnicity') == 'maori' else None,
@@ -102,6 +98,18 @@ def generate():
 @app.route('/about-pepeha')
 def about_pepeha():
     return render_template('about-pepeha.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
