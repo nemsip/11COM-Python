@@ -1,6 +1,8 @@
 Check the non-maori/ maori forms with the maori teacher to see if its okay
 
-Add translation from english place names to maori with groq (half done - clean the api response and only take the translated data)
+make it so header ad stuff is appended with jinja instead of hardcoding
+
+Add translation from english place names to maori with groq
 
 Add privacy policy and terms of service
 
