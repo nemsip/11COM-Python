@@ -1,40 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "sys/err-base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Page Not Found</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .bg {    
-            content: "";
-            background-image: url("../static/images/background-koru.png");
-            background-size: cover;
-            position: absolute;
-            top: 0px;
-            right: 0px;
-            bottom: 0px;
-            left: 0px;
-            opacity: 0.2;
-      }
-    </style>
-</head>
+{% block title %}404 Page Not Found{% endblock %}
 
-<body>
-    <div class="bg"></div>
-    <div class="flex flex-col items-center justify-center h-screen">
-        <h1 class="text-6xl font-bold mb-4">404</h1>
-        <p class="text-xl">Page not found</p>
-        <!-- back button -->
-         <a href="/"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold m-5 py-2 px-4 rounded">Back to Home</button></a>
-        </div>
-</body>
-
-{% if e %}
-<footer class="fixed bottom-0 left-0 w-full text-center p-4">
-    <small class="text-sm bottom-0 w-full text-gray-400">{{ e }}</small>
-</footer>
-{% endif %}
-
-</html>
+{% block content %}
+    <h1 class="text-6xl font-bold mb-4">404</h1>
+    <p class="text-xl">Page not found</p>
+{% endblock %}

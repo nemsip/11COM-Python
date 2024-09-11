@@ -1,78 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepeha Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-image: url("../static/images/background-koru.png");
-            background-size: cover;
-            font-family: 'Poppins', sans-serif;
-            background-attachment: fixed;
-        }
-        .hero {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 4rem 0;
-            border-radius: 10px;
-        }
-        .hero-content {
-            max-width: 700px;
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
+{% extends "base.html" %}
 
-    <header class="bg-green-900 text-green-300 p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Pepeha Generator</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:text-white">Home</a></li>
-                    <li><a href="#about" class="hover:text-white">About</a></li>
-                    <li><a href="/login" class="hover:text-white">Login</a></li>
-                </ul>
-            </nav>
+{% block title %}Pepeha Generator{% endblock %}
+
+{% block content %}
+    <section class="hero bg-gray-800 text-gray-300 text-center">
+        <div class="container mx-auto hero-content p-8 rounded-lg">
+            <h2 class="text-4xl font-bold mb-4">Welcome to the Pepeha Generator</h2>
+            <p class="text-lg mb-8">Craft and share your pepeha with ease. Whether you're introducing yourself or your family, our tool makes it simple to generate a pepeha that reflects your heritage.</p>
+            <a href="/generate" class="bg-green-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-green-800 transition duration-300">Get Started</a>
         </div>
-    </header>
+    </section>
 
-    <main class="flex-grow">
-        <section class="hero bg-gray-800 text-gray-300 text-center">
-            <div class="container mx-auto hero-content p-8 rounded-lg">
-                <h2 class="text-4xl font-bold mb-4">Welcome to the Pepeha Generator</h2>
-                <p class="text-lg mb-8">Craft and share your pepeha with ease. Whether you're introducing yourself or your family, our tool makes it simple to generate a pepeha that reflects your heritage.</p>
-                <a href="/generate" class="bg-green-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-green-800 transition duration-300">Get Started</a>
-            </div>
-        </section>
-
-        <section id="about" class="py-12 bg-gray-800">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6">About the Pepeha Generator</h2>
-                <p class="text-lg mb-6">The Pepeha Generator helps you create a pepeha that can be used in introductions, presentations, and cultural settings. A pepeha is a traditional Māori way of introducing oneself and connecting with one's heritage.</p>
-                <p class="text-lg">By filling out a simple form, you can generate a pepeha that includes your name, family, home, and other personal details. It's a meaningful way to share your identity and cultural background.</p>
-            </div>
-        </section>
-
-        <section id="get-started" class="py-12">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6">Ready to Create Your Pepeha?</h2>
-                <p class="text-lg mb-8">Start generating your pepeha now by clicking the button below. Follow the prompts to input your details, and you’ll have a personalized pepeha ready in no time!</p>
-                <a href="/generate" class="bg-green-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-green-800 transition duration-300">Generate Your Pepeha</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-green-900 text-green-300 p-4 mt-8">
+    <section id="about" class="py-12 bg-gray-800">
         <div class="container mx-auto text-center">
-            <p>&copy; 2024 Pepeha Generator. All rights reserved.</p>
-            <div class="mt-2">
-                <a href="/privacy" class="hover:text-white mr-4">Privacy Policy</a>
-                <a href="/terms" class="hover:text-white">Terms of Service</a>
-            </div>
+            <h2 class="text-3xl font-bold mb-6">About the Pepeha Generator</h2>
+            <p class="text-lg mb-6">The Pepeha Generator helps you create a pepeha that can be used in introductions, presentations, and cultural settings. A pepeha is a traditional Māori way of introducing oneself and connecting with one's heritage.</p>
+            <p class="text-lg">By filling out a simple form, you can generate a pepeha that includes your name, family, home, and other personal details. It's a meaningful way to share your identity and cultural background.</p>
         </div>
-    </footer>
+    </section>
 
-</body>
-</html>
+    <section id="get-started" class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Create Your Pepeha?</h2>
+            <p class="text-lg mb-8">Start generating your pepeha now by clicking the button below. Follow the prompts to input your details, and you'll have a personalized pepeha ready in no time!</p>
+            <a href="/generate" class="bg-green-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-green-800 transition duration-300">Generate Your Pepeha</a>
+        </div>
+    </section>
+{% endblock %}

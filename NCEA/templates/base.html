@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/global.css') }}">
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
+    <header class="bg-green-900 text-green-300 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Pepeha Generator</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="hover:text-white">Home</a></li>
+                    <li><a href="/about-pepeha" class="hover:text-white">Learn</a></li>
+                    <li><a href="/login" class="hover:text-white">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-green-900 text-green-300 p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Pepeha Generator. All rights reserved.</p>
+            <div class="mt-2 text-sm">
+                <a href="/privacy" class="hover:text-white mr-4">Privacy Policy</a>
+                <a href="/terms" class="hover:text-white mr-4">Terms of Use</a>
+                <a href="/contact" class="hover:text-white mr-4">Contact Us</a>
+            </div>
+            <div class="mt-2 text-sm">View this Project on <a href="https://github.com/nemsip/11COM-Python" class="hover:text-white mr-4"><strong>Github</strong></a></div><br>
+            <div class="mt-2 text-xs">Made with <span class="text-red-500">&hearts;</span> by Cryptic1526 (Nemith Wijesiri)</div>
+        </div>
+    </footer>
+</body>
+</html>
