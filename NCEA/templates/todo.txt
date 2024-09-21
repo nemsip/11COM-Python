@@ -1,10 +1,12 @@
-Check the non-maori/ maori forms with the maori teacher to see if its okay
-
-make it so header ad stuff is appended with jinja instead of hardcoding
+Check the non-maori/ maori forms with the maori teacher to see if its okay - pending
 
 Add translation from english place names to maori with groq
 
-Add privacy policy and terms of service
+Make index page look nicer
+
+make the footer look nicer
+
+add a corner banner which links to the github repo
 
 add link embed
 

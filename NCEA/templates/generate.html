@@ -11,26 +11,26 @@
             <div class="bg-gray-800 p-6 rounded-lg shadow-2xl">
                 <div class="flex space-x-2 mb-4">
                     <div class="button-container">
-                        <button id="pakeha" class="button selected" style="width: 100px; height: 40px;">Pakeha</button>
+                        <button id="pakeha" class="button selected" style="width: 100px; height: 40px;">Pākehā</button>
                         <button id="maori" class="button" style="width: 100px; height: 40px;">Māori</button>
                     </div>
                 </div>
                 <form id="pakehaForm" action="/generate" method="post">
                     <input name="ethnicity" value="pakeha" type="hidden">
                     
-                    <label for="mountain" class="text-sm">Mountain (aka Mt Wellington)</label>
+                    <label for="mountain" class="text-sm">Mountain (i.e. Mt Wellington)</label>
                     <input type="text" name="mountain" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
-                    <label for="river" class="text-sm">River (aka Manukau River)</label>
+                    <label for="river" class="text-sm">River (i.e. Manukau)</label>
                     <input type="text" name="river" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
-                    <label for="family-name" class="text-sm">Family Name (aka Doe)</label>
+                    <label for="family-name" class="text-sm">Family Name (i.e. Doe)</label>
                     <input type="text" name="family-name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
-                    <label for="home" class="text-sm">Home (aka Auckland)</label>
+                    <label for="home" class="text-sm">Home (i.e. Auckland)</label>
                     <input type="text" name="home" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
-                    <label for="name" class="text-sm">Name (aka John)</label>
+                    <label for="name" class="text-sm">Name (i.e. John)</label>
                     <input type="text" name="name" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
                     <button type="submit" id="generatePakeha" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more" disabled>GENERATE</button>
@@ -44,6 +44,9 @@
                     <label for="awa" class="text-sm">Awa (River)</label>
                     <input type="text" name="awa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
+                    <label for="waka" class="text-sm">Waka (Canoe)</label>
+                    <input type="text" name="waka" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
+
                     <label for="marae" class="text-sm">Marae</label>
                     <input type="text" name="marae" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
@@ -55,9 +58,6 @@
 
                     <label for="ingoa" class="text-sm">Ingoa (Name)</label>
                     <input type="text" name="ingoa" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
-
-                    <label for="waka" class="text-sm">Waka (Canoe)</label>
-                    <input type="text" name="waka" class="w-full bg-gray-700 p-3 rounded mb-3 text-sm custom-shadow-more">
 
                     <button type="submit" id="generateMaori" class="w-full bg-gray-700 text-gray-300 p-3 rounded mt-4 text-sm custom-shadow-more" disabled>WHAKAPUTA (GENERATE)</button>
                 </form>
