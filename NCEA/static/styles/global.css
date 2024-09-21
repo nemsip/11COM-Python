@@ -1,7 +1,7 @@
 /* Custom Global CSS for base.html of the project */
 
 body {
-    background-image: url("../static/images/background-koru.png");
+    background-image: url("/static/images/background-koru.png");
     background-size: cover;
     font-family: 'Poppins', sans-serif;
     background-attachment: fixed;
@@ -81,4 +81,31 @@ body {
 }
 button:disabled {
     cursor: not-allowed;
+}
+
+@media (min-width: 769px) {
+    .navbar-toggle {
+         display: none; 
+     }
+    .nav-links {
+         display: flex!important; 
+     }
+ }
+  @media (max-width: 768px) {
+    .navbar-toggle {
+         display: block; 
+     }
+    .nav-links {
+         display: none; 
+         flex-direction: column;
+         width: 100%;
+     }
+    .nav-links.active {
+         display: flex; 
+     }
+ }
+
+.footer-container {
+    max-width: 900px;
+    margin: auto;
 }
