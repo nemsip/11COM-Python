@@ -1,10 +1,6 @@
-PRIORITY: NCEA Assesment Evidence Document
+PRIORITY: Purge unused CSS when styling is doe
 
-check performance with Chrome Lighthouse - Weird thing where poppins doesnt get loaded into the page (base)
-
-Make index page look nicer
-
-add a corner banner which links to the github repo because thats cool and hip i think
+Ask sir - check performance with Chrome Lighthouse - Weird thing where poppins doesnt get loaded into the page (base)
 
 add favicon
 

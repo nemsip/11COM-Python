@@ -1,2 +1,140 @@
-/* Custom Global CSS for base.html of the project (MINIFIED. GO TO COMMAND PALETTE > FORMAT DOCUMENT TO VIEW NORMALLY) */
-#maori,#pakeha{background-color:#45a049}body{background-image:url("/static/images/background-koru.webp");background-size:cover;font-family:Poppins,sans-serif;background-attachment:fixed}.hero{background:rgba(0,0,0,.6);padding:4rem 0;border-radius:10px}.hero-content{max-width:700px}.custom-shadow-more{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06)}.pepeha-text{font-size:1.1rem;line-height:1.8}.tick-icon{display:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#48bb78}@keyframes fadeInOut{0%,100%{opacity:0}50%{opacity:1}}.tick-animation{animation:1s ease-in-out fadeInOut}.button-container{display:flex;gap:8px;transform:scale(.9);margin:0 auto;align-items:center}.button{display:flex;justify-content:center;align-items:center;padding:10px 20px;font-size:14px;border:none;cursor:pointer;transition:.3s;text-transform:uppercase;font-weight:700;color:#fff;box-shadow:0 3px 5px rgba(0,0,0,.1)}.button.selected{transform:scale(1.1);font-size:15px;padding:14px 28px;box-shadow:0 5px 7px rgba(0,0,0,.2)}#pakeha{border-radius:20px 0 0 20px}#maori{border-radius:0 20px 20px 0}#maori.selected,#pakeha.selected{background-color:#5cbf60}button:disabled{cursor:not-allowed}@media (min-width:769px){.navbar-toggle{display:none}.nav-links{display:flex!important}}@media (max-width:768px){.navbar-toggle{display:block}.nav-links{display:none;flex-direction:column;width:100%}.nav-links.active{display:flex}}.footer-container{max-width:900px;margin:auto}.busy{position:relative;background-color:rgba(55,65,81,var(--tw-bg-opacity));color:transparent}.busy::before{position:absolute;inset:50%;translate:-50% -50%;content:"";color:transparent;width:25px;height:25px;border:5px solid transparent;border-top-color:rgba(4,120,87,var(--tw-bg-opacity));border-left-color:rgba(4,120,87,var(--tw-bg-opacity));border-right-color:rgba(4,120,87,var(--tw-bg-opacity));border-radius:100%;animation:1s linear infinite spin}@keyframes spin{from{rotate:0deg}to{rotate:360deg}}
+/* Custom Global CSS for base.html of the project */
+
+body {
+    background-image: url("/static/images/background-koru.webp");
+    background-color: rgb(17 24 39);
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    background-attachment: fixed;
+}
+.hero {
+    padding: 4rem 0;
+    border-radius: 10px;
+}
+.hero-content {
+    max-width: 700px;
+}
+.custom-shadow-more {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.pepeha-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+.tick-icon {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #48bb78;
+}
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.tick-animation {
+    animation: fadeInOut 1s ease-in-out;
+}
+
+.button-container {
+    display: flex;
+    gap: 8px;
+    transform: scale(0.9); 
+    margin: 0 auto;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px; 
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.button.selected {
+    transform: scale(1.1);
+    font-size: 15px; 
+    padding: 14px 28px; 
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2); 
+}
+#pakeha {
+    background-color: #45a049;
+    border-radius: 20px 0 0 20px; 
+}
+#maori {
+    background-color: #45a049;
+    border-radius: 0 20px 20px 0;
+}
+#pakeha.selected {
+    background-color: #5cbf60;
+}
+#maori.selected {
+    background-color: #5cbf60;
+}
+button:disabled {
+    cursor: not-allowed;
+}
+
+@media (min-width: 769px) {
+    .navbar-toggle {
+         display: none; 
+     }
+    .nav-links {
+         display: flex!important; 
+     }
+ }
+  @media (max-width: 768px) {
+    .navbar-toggle {
+         display: block; 
+     }
+    .nav-links {
+         display: none; 
+         flex-direction: column;
+         width: 100%;
+     }
+    .nav-links.active {
+         display: flex; 
+     }
+ }
+
+.footer-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.busy {
+    position: relative;
+    background-color: rgba(55,65,81,var(--tw-bg-opacity));
+    color: transparent;
+}
+
+.busy::before {
+    position: absolute;
+    inset: 50%;
+    translate: -50% -50%;
+    content: "";
+    color: transparent;
+    width: 25px;
+    height: 25px;
+    border: 5px solid transparent;
+    border-top-color: rgba(4,120,87,var(--tw-bg-opacity));
+    border-left-color: rgba(4,120,87,var(--tw-bg-opacity));
+    border-right-color: rgba(4,120,87,var(--tw-bg-opacity));
+    border-radius: 100%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from { rotate: 0deg; }
+    to { rotate: 360deg; }
+}

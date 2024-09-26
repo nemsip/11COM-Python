@@ -9,13 +9,19 @@ import dotenv
 from flask import (Flask, flash, redirect, render_template, request,
                    session)
 from groq import Groq
+from flask_compress import Compress 
 
 dotenv.load_dotenv()
 
 app = Flask(__name__, static_url_path='/static')
 
+Compress(app)
+
 app.secret_key = 'skibidi'
 app.config['SESSION_TYPE'] = 'filesystem'
+app.config['COMPRESS_MIMETYPES'] = ['text/html', 'text/css', 'application/json', 'application/javascript']
+app.config['COMPRESS_LEVEL'] = 6  
+app.config['COMPRESS_MIN_SIZE'] = 500 
 
 
 def log_error(error):
@@ -48,6 +54,7 @@ def index():
 def get_translation(text):
     client = Groq(api_key=os.getenv('groq_api'))
 
+    # code wrap recommended if you eant to read this
     system_prompt = {
         "role": "system",
         "content": "You are a Translator that translates english new zealand place names and mountain into their traditional name in the Maori Language. For example, Auckland is Tāmaki Makaurau, and Mount Wellington is Maungarei. You reply with JUST the translated name. If you don't know the name, reply with \"Error\". Don't add any extra text. Do not say anything along the lines of \"Please provide the English name of the place or mountain you'd like me to translate or Please go ahead and provide the English name of the place or mountain you'd like me to translate.\", the only accepted output is the translated name if applicable, if not, to say Error. Only reply with the translated name. Do not hallucinate, which means do not make up a name that doesn't exist. If the name is not in the Maori language or you don't know, reply with \"Error\". If the name is not in english and is in Maori, do not translate. If the name is in both languages or a mix of both, translate what isn't maori already into Maori. Do not translate the name into any other language other than Maori."

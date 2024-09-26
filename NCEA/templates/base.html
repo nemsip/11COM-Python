@@ -19,38 +19,37 @@
     <meta property="og:locale" content="en_GB">
 
     <title>{% block title %}Default Title{% endblock %}</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preload" href="/static/images/background-koru.webp" as="image">
-    <!-- Weird thing where poppins doesnt get loaded into the page. DONT BE AN IDIOT AND FORGET TO FIX THIS BEFORE SENDING IT FOR MARKING -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
-    <link rel="preload" href="{{ url_for('static', filename='styles/global.css') }}" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/global.css') }}">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    </noscript>
+
 </head>
-<body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
-    <header class="bg-green-900 text-green-300 p-4 shadow-md">
+<body class="bg-gray-800 min-h-screen flex flex-col font-sans">
+    <header class="bg-green-700 text-white p-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Pepeha Generator</h1>
+            <h1 class="text-3xl text-gray-300 font-bold">Pepeha Generator</h1>
             <nav>
-                <button class="navbar-toggle" id="navbarToggle" aria-expanded="false" style="font-size: 20px;" aria-controls="navbarLinks" aria-label="Toggle navigation">
-                    &#9776;
+                <button class="navbar-toggle md:hidden" id="navbarToggle" aria-expanded="false" aria-controls="navbarLinks" aria-label="Toggle navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
                 </button>
-                <ul id="navbarLinks" class="nav-links flex space-x-4" aria-labelledby="navbarToggle">
-                    <li><a href="/" class="hover:text-white">Home</a></li>
-                    <li><a href="/learn" class="hover:text-white">Learn</a></li>
-                    <li><a href="/login" class="hover:text-white">Login</a></li>
+                <ul id="navbarLinks" class="nav-links hidden md:flex text-gray-300 space-x-6" aria-labelledby="navbarToggle">
+                    <li><a href="/" class="hover:text-green-200 transition duration-300">Home</a></li>
+                    <li><a href="/generate" class="hover:text-green-200 transition duration-300">Generate</a></li>
+                    <li><a href="/learn" class="hover:text-green-200 transition duration-300">Learn</a></li>
+                    <li><a href="/login" class="hover:text-green-200 transition duration-300">Login</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="flex-grow">
+    <main class="flex-grow container mx-auto px-10 py-10 ">
         {% block content %}{% endblock %}
     </main>
 
