@@ -12,21 +12,45 @@
             <div id="pepehaResult" class="pepeha-text text-center mb-6">
                 {% if ethnicity == 'pakeha' %}   
                     Tēnā koutou katoa<br>
-                    Ko {{ mtTranslated }} te maunga.<br>
-                    Ko {{ river }} te awa.<br>
-                    Nō {{ homeTranslated }} ahau.<br>
-                    Ko {{ family_name }} te whānau.<br>
-                    Ko {{ name }} tōku ingoa.<br>
+                    {% if mtTranslated %}
+                        Ko {{ mtTranslated }} te maunga.<br>
+                    {% endif %}
+                    {% if river %}
+                        Ko {{ river }} te awa.<br>
+                    {% endif %}
+                    {% if homeTranslated %}
+                        Nō {{ homeTranslated }} ahau.<br>
+                    {% endif %}
+                    {% if family_name %}
+                        Ko {{ family_name }} te whānau.<br>
+                    {% endif %}
+                    {% if name %}
+                        Ko {{ name }} tōku ingoa.<br>
+                    {% endif %}
                     Tēnā tātou katoa<br>
                 {% elif ethnicity == 'maori' %}
                     Tēnā koutou katoa<br>
-                    Ko {{ maungaTranslated }} te maunga.<br>
-                    Ko {{ awa }} te awa.<br>
-                    Ko {{ waka }} te waka.<br>
-                    Ko {{ iwi }} te iwi.<br>
-                    Ko {{ marae }} te marae.<br>
-                    Ko {{ whanau }} te whānau.<br>
-                    Ko {{ ingoa }} tōku ingoa.<br>
+                    {% if maungaTranslated %}
+                        Ko {{ maungaTranslated }} te maunga.<br>
+                    {% endif %}
+                    {% if awa %}
+                        Ko {{ awa }} te awa.<br>
+                    {% endif %}
+                    {% if waka %}
+                        Ko {{ waka }} te waka.<br>
+                    {% endif %}
+                    {% if iwi %}
+                        Ko {{ iwi }} te iwi.<br>
+                    {% endif %}
+                    {% if marae %}
+                        Ko {{ marae }} te marae.<br>
+                    {% endif %}
+                    {% if whanau %}
+                        Ko {{ whanau }} te whānau.<br>
+                    {% endif %}
+                    {% if ingoa %}
+                        Ko {{ ingoa }} tōku ingoa.<br>
+                    {% endif %}
                     Tēnā tātou katoa
                 {% endif %}
             </div>

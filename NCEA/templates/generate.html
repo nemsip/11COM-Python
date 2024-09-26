@@ -65,42 +65,5 @@
         </div>
     </main>
 
-    <script>
-        const buttons = document.querySelectorAll('.button');
-        const pakehaForm = document.getElementById('pakehaForm');
-        const maoriForm = document.getElementById('maoriForm');
-        const pakehaInputs = pakehaForm.querySelectorAll('input[type="text"]');
-        const maoriInputs = maoriForm.querySelectorAll('input[type="text"]');
-        const generatePakeha = document.getElementById('generatePakeha');
-        const generateMaori = document.getElementById('generateMaori');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                buttons.forEach(btn => btn.classList.remove('selected'));
-                button.classList.add('selected');
-
-                if (button.id === 'pakeha') {
-                    pakehaForm.style.display = 'block';
-                    maoriForm.style.display = 'none';
-                } else if (button.id === 'maori') {
-                    pakehaForm.style.display = 'none';
-                    maoriForm.style.display = 'block';
-                }
-            });
-        });
-
-        const handleInput = (inputs, button) => {
-            let isAnyFilled = Array.from(inputs).some(input => input.value.trim() !== '');
-            button.disabled = !isAnyFilled;
-            button.classList.toggle('bg-green-700', isAnyFilled);
-        };
-
-        pakehaInputs.forEach(input => {
-            input.addEventListener('input', () => handleInput(pakehaInputs, generatePakeha));
-        });
-
-        maoriInputs.forEach(input => {
-            input.addEventListener('input', () => handleInput(maoriInputs, generateMaori));
-        });
-    </script>
+    <script src="/static/js/generator.js" defer></script>
 {% endblock %}

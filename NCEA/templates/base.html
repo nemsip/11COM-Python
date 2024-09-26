@@ -3,11 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Default Title{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="A tool that generates personalised Māori introductions.">
+    <meta name="keywords" content="Pepeha, Māori, Introduction, Generator, Personalised">
+    <meta name="author" content="Nemith Wijesiri">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
 
+    <meta property="og:title" content="Pepeha Generator">
+    <meta property="og:description" content="A tool that generates personalised Māori introductions.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png">
+    <meta property="og:url" content="https://pepeha-generator.example.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pepeha Generator">
+    <meta property="og:locale" content="en_GB">
+
+    <title>{% block title %}Default Title{% endblock %}</title>
+    
+    <link rel="preload" href="/static/images/background-koru.webp" as="image">
+    <!-- Weird thing where poppins doesnt get loaded into the page. DONT BE AN IDIOT AND FORGET TO FIX THIS BEFORE SENDING IT FOR MARKING -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="preload" href="{{ url_for('static', filename='styles/global.css') }}" as="style">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/global.css') }}">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </noscript>
 </head>
 <body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
     <header class="bg-green-900 text-green-300 p-4 shadow-md">
@@ -56,7 +80,7 @@
             <div class="text-center mb-8">
                 <h1 class="text-white text-2xl font-bold mb-4">Pepeha Generator</h1>
                 <p class="text-sm">
-                    Pepeha Generator is a tool that generates personalized Māori introductions for people of all cultures and backgrounds. It uses a combination of machine learning and traditional Māori pepeha templates to create unique and meaningful introductions that are tailored to the individual.
+                    Pepeha Generator is a tool that generates personalised Māori introductions for people of all cultures and backgrounds. It uses a combination of machine learning and traditional Māori pepeha templates to create unique and meaningful introductions that are tailored to the individual.
                 </p>
             </div>
             <div class="flex justify-center space-x-4 mb-8">
