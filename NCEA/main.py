@@ -1,3 +1,5 @@
+# DO NOT RUN THIS FILE! RUN "waitress-serve --listen=127.0.0.1:80 main:app" IN THE VENV TO START THE SERVER
+
 import os
 import traceback
 from datetime import datetime
@@ -20,8 +22,7 @@ Compress(app)
 app.secret_key = 'skibidi'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['COMPRESS_MIMETYPES'] = ['text/html', 'text/css', 'application/json', 'application/javascript']
-app.config['COMPRESS_LEVEL'] = 6  
-app.config['COMPRESS_MIN_SIZE'] = 500 
+app.config['COMPRESS_LEVEL'] = 9
 
 
 def log_error(error):
@@ -215,4 +216,4 @@ def forbidden(e):
 
 
 if __name__ == '__main__':
-    app.run(port=80, debug=True)
+    app.run(port=80)
