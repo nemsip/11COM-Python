@@ -1,8 +1,0 @@
-PRIORITY: Purge unused CSS when styling is doe
-
-Ask sir - check performance with Chrome Lighthouse - Weird thing where poppins doesnt get loaded into the page (base)
-
-add favicon
-
-get logging in working (extra)
-- impliment generator usage limits
